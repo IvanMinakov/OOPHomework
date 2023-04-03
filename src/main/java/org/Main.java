@@ -24,7 +24,7 @@ public class Main {
                     heroes.add(new Peasant("Пересвет", 5, 9, 50, new int[]{3, 7}, 100));
                     break;
                 case 4:
-                    heroes.add(new Sniper("Зоркомет", 6, 8, 68, new int[]{10, 18}, 100));
+                    heroes.add(new Archer("Зоркомет", 6, 8, 68, new int[]{10, 18}, 100));
                     break;
                 case 5:
                     heroes.add(new Spearman("Бронеслав", 7, 2, 70, new int[]{12, 20}, 100));
@@ -36,5 +36,8 @@ public class Main {
 
         }
         heroes.forEach((n)->System.out.println(n.name +" " + n.getInfo()));
+        Coordinates archer1Coordinates = new Coordinates(0, 0);
+        Archer archer1 = new Archer(archer1Coordinates);
+        archer1.step(new Coordinates(3, 5));
     }
 }
