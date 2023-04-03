@@ -24,8 +24,30 @@ public class Archer extends Shooter {
     public boolean isAlive() {
         return hP > 0;
     }
+
     public boolean hasArrows() {
         return arrows > 0;
+    }
+
+    public void findNearestEnemy(ArrayList<BaseHero> heroes) {
+        BaseHero nearest = null;
+        double minDistance = Double.MAX_VALUE;
+
+        for (BaseHero hero : heroes) {
+            if (hero instanceof BaseUnit && hero.isAlive()) {
+                double distance = coordinates.distance(((BaseUnit) hero).coordinates);
+                if (distance < minDistance) {
+                    nearest = hero;
+                    minDistance = distance;
+                }
+            }
+        }
+
+        if (nearest != null) {
+            System.out.println("Ближайший враг: " + nearest.name);
+        } else {
+            System.out.println("Врагов не найдено");
+        }
     }
 
     @Override
